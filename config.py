@@ -32,10 +32,10 @@ if __name__ == '__main__':
     net.addController(c1)
     #net.addController(c2)
     #Add hosts and switchs
-    firstHost= net.addHost('h1', ip='10.0.2.101')
-    secondHost= net.addHost('h2', ip='10.0.2.102')
-    thirdHost = net.addHost( 'h3', ip='10.0.2.103')
-    leftSwitch = net.addSwitch('s1')
+    firstHost  = net.addHost('h1', ip = '192.168.1.101')
+    secondHost = net.addHost('h2', ip = '192.168.1.102')
+    thirdHost  = net.addHost('h3', ip = '192.168.1.103')
+    leftSwitch  = net.addSwitch('s1')
     rightSwitch = net.addSwitch('s2')
 
     firstHost.cmd('python -m SimpleHTTPServer 80 &')
@@ -44,8 +44,8 @@ if __name__ == '__main__':
     thirdHost.cmd('python -m SimpleHTTPServer 80 &')
 
     # Add links
-    net.addLink(firstHost, leftSwitch)
-    net.addLink(leftSwitch, rightSwitch)
+    net.addLink(firstHost,   leftSwitch)
+    net.addLink(leftSwitch,  rightSwitch)
     net.addLink(rightSwitch, secondHost)
     net.addLink(rightSwitch, thirdHost)
 
