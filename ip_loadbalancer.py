@@ -1,3 +1,5 @@
+#!/usr/bin/python
+#-*- coding:utf-8 -*-
 # Copyright 2013 James McCauley
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -107,6 +109,7 @@ class iplb (object):
     self.con = connection
     self.mac = self.con.eth_addr
     self.live_servers = {} # IP -> MAC,port
+    self.last_server = 0
 
     try:
       self.log = log.getChild(dpid_to_str(self.con.dpid))
@@ -199,7 +202,10 @@ class iplb (object):
     """
     Pick a server for a (hopefully) new connection
     """
-    return random.choice(self.live_servers.keys())
+    server_list = self.live_servers.keys()
+    self.last_server = (self.last_server + 1) % len(server_list)
+    return server_list[self.last_server]
+    # return random.choice(self.live_servers.keys())
 
   def _handle_PacketIn (self, event):
     inport = event.port

@@ -1,3 +1,4 @@
+#-*- coding:utf-8 -*-
 """
 Author Haichen Shen
 
@@ -19,8 +20,8 @@ log = core.getLogger()
 IDLE_TIMEOUT = 60    # in seconds
 HARD_TIMEOUT = 0    # infinity
 
-LOAD_BALANCER_IP = IPAddr('10.0.0.254')
-LOAD_BALANCER_MAC = EthAddr('00:00:00:00:00:FE')
+LOAD_BALANCER_IP = IPAddr('10.0.0.1')    # '10.0.0.254'
+LOAD_BALANCER_MAC = EthAddr('00:00:00:00:00:01')    # '00:00:00:00:00:FE'
 
 class LoadBalancer (EventMixin):    # 事件驱动
 
